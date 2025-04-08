@@ -20,7 +20,7 @@ from src.hallucination.confidence import ConfidenceScorer
 from src.hallucination.detector import HallucinationDetector
 
 # Load environment variables
-load_dotenv()
+os.environ["OPENAI_API_KEY"] = "your-actual-api-key-here"
 
 # Set up logging
 logging.basicConfig(

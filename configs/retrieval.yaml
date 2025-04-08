@@ -1,0 +1,18 @@
+# Retrieval component configuration
+
+embedding:
+  model_name: "sentence-transformers/all-MiniLM-L6-v2"
+  device: "cpu"
+  batch_size: 32
+
+vector_store:
+  embedding_dimension: 384  # Depends on the embedding model
+  index_type: "IndexFlatL2"  # Options: IndexFlatL2, IndexIVFFlat
+  store_path: "data/embeddings/finqa.index"
+
+retrieval:
+  top_k: 5
+  similarity_threshold: 0.6
+  reranker_enabled: false
+  reranker_model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  reranker_top_k: 3

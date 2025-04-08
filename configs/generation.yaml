@@ -1,0 +1,45 @@
+# Generation component configuration
+
+llm:
+  model_name: "gpt-4"
+  temperature: 0.0
+  max_tokens: 1024
+  top_p: 1.0
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
+  timeout: 30
+
+generation:
+  max_context_length: 4000
+  use_structured_output: true
+  num_generations: 1
+
+prompt_templates:
+  qa_system_template: |
+    You are a financial analyst assistant specializing in answering questions based on financial documents.
+    Use only the provided context to answer the question. If the context doesn't contain the relevant information,
+    say "I don't have enough information to answer this question" instead of making up an answer.
+    Be precise, accurate, and base your answer exclusively on the provided financial data.
+    
+    Context:
+    {context}
+
+  qa_human_template: |
+    Question: {question}
+
+  confidence_system_template: |
+    You are a financial data verification system.
+    You need to verify if the provided answer is supported by the context.
+    Analyze carefully and provide a confidence score from 0 to 100, where:
+    - 0 means the answer is completely unsupported by or contradictory to the context
+    - 100 means the answer is fully supported by the context with no discrepancies
+    
+    Context:
+    {context}
+    
+    Answer to verify:
+    {answer}
+
+  confidence_human_template: |
+    What is your confidence score for this answer?
+    Explain your reasoning step by step, then conclude with 'Confidence Score: X' where X is the numerical score.

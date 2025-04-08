@@ -9,7 +9,8 @@ from typing import List, Optional, Dict, Any, Tuple
 import numpy as np
 import faiss
 from langchain.docstore.document import Document
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
+
 
 logger = logging.getLogger(__name__)
 
@@ -87,6 +88,7 @@ class FAISSVectorStore:
             else:
                 logger.warning("Not enough vectors to train IVF index")
                 
+        embeddings = np.array(embeddings, dtype=np.float32)
         faiss.normalize_L2(embeddings)  # Normalize for cosine similarity
         self.index.add(embeddings)
         

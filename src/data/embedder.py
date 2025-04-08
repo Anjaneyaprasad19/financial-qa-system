@@ -6,7 +6,7 @@ import logging
 from typing import List, Optional, Dict, Any, Union
 
 import numpy as np
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.docstore.document import Document
 
 logger = logging.getLogger(__name__)
